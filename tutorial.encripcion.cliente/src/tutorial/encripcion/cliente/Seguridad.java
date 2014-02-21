@@ -31,13 +31,15 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
 /**
- *
- * @author johnmartinez
+ * Clase para el manejo de funciones de encripción.
+ * Se encarga de la generación, guardado y lectura de llaves.
+ * También se encarga de la encripción de mensajes con llave pública.
+ * @author John Jairo Martínez
  */
 public class Seguridad {
  
     /**
-     * Genera un par de llaves asimetricas RSA. 
+     * Genera un par de llaves asimetricas para algoritmo RSA. 
      * @return Par de llaves.
      * @throws NoSuchAlgorithmException 
      */
@@ -49,7 +51,7 @@ public class Seguridad {
     }
     
     /**
-     * Guarda la llave privada en la direccion dada
+     * Guarda la llave privada en la direccion del equipo dada.
      * @param parLlaves par de llaves generado
      * @param direccion dirección donde se va a guardar
      * @throws NoSuchAlgorithmException
@@ -73,7 +75,7 @@ public class Seguridad {
     }
     
     /**
-     * Guarda la llave publica en la dirección dada
+     * Guarda la llave publica en la dirección del equipo dada
      * @param parLlaves par de llaves
      * @param direccion dirección donde se va a guardar
      * @throws NoSuchAlgorithmException
@@ -120,8 +122,8 @@ public class Seguridad {
     
     /**
      * Lee la llave privada de la dirección dada.
-     * @param direccion dirección de la cual se va a leer la llave pública
-     * @return Llave pública leída.
+     * @param direccion dirección de la cual se va a leer la llave privada
+     * @return Llave privada leída.
      * @throws FileNotFoundException
      * @throws IOException
      * @throws ClassNotFoundException
@@ -141,10 +143,10 @@ public class Seguridad {
     }
     
     /**
-     * 
-     * @param mensajeAEncriptar
-     * @param llavePrivada
-     * @return
+     * Encripta un mensaje a partir de la llave privada.
+     * @param mensajeAEncriptar string con el mensaje que se desea encriptar
+     * @param llavePrivada llave privada RSA para encriptar el mensaje
+     * @return byte[] con el mensaje encriptado
      * @throws NoSuchAlgorithmException
      * @throws NoSuchPaddingException
      * @throws InvalidKeyException

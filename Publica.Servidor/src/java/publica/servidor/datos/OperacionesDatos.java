@@ -18,14 +18,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *
- * @author JOHN JAIRO
+ * Realiza operaciones de datos en la base de datos
+ * @author John Jairo Martínez
  */
 public class OperacionesDatos {
 
-    
+    /**
+     * Dirección de conexión a la base de datos
+     */
     private static final String BASE_DATOS = "jdbc:mysql://localhost/seguridad?user=root&password=development";
     
+    /**
+     * Constructor del objeto
+     */
     public OperacionesDatos() {
     }
     

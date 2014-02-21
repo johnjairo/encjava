@@ -30,8 +30,10 @@ import tutorial.encripcion.cliente.pojos.ValidarRequest;
 
 
 /**
- *
- * @author johnmartinez
+ * Interfaz de usuario que se encarga de enviar las solicitudes al web service.
+ * Utiliza la librería Gson para generar las cadenas json de las solicitudes al 
+ * web service.
+ * @author John Jairo Martínez
  */
 public class frCliente extends javax.swing.JFrame {
 
@@ -235,6 +237,10 @@ public class frCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Permite seleccionar la ruta donde se va a generar las llaves privadas y públicas.
+     * @param evt 
+     */
     private void btnSeleccionarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarRutaActionPerformed
         JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -246,6 +252,10 @@ public class frCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSeleccionarRutaActionPerformed
 
+    /**
+     * Genera las llaves públicas y privadas en la carpeta seleccionada previamente.
+     * @param evt 
+     */
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         try {            
             if(txtRuta.getText() != null && !txtRuta.getText().isEmpty()) {
@@ -264,6 +274,10 @@ public class frCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnGenerarActionPerformed
 
+    /**
+     * Permite seleccionar en donde se encuentra la llave publica a registrar
+     * @param evt 
+     */
     private void btnLlavePublicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLlavePublicaActionPerformed
         JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -275,6 +289,10 @@ public class frCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLlavePublicaActionPerformed
 
+    /**
+     * Permite seleccionar en donde se encuentra la llave privada.
+     * @param evt 
+     */
     private void btnLlavePrivadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLlavePrivadaActionPerformed
         JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -286,6 +304,11 @@ public class frCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLlavePrivadaActionPerformed
 
+    /**
+     * Permite registrar la llave publica en el servidor, muestra un mensaje de confirmación
+     * con el identificador generado.
+     * @param evt 
+     */
     private void btnRegistarPublicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistarPublicaActionPerformed
         try {            
             if(txtLlavePublica.getText() != null && !txtLlavePublica.getText().isEmpty()) {
@@ -314,6 +337,10 @@ public class frCliente extends javax.swing.JFrame {
         }  
     }//GEN-LAST:event_btnRegistarPublicaActionPerformed
 
+    /**
+     * Permite comprobar que un mensaje fue encriptado con la llave dada.
+     * @param evt 
+     */
     private void btnComprobarMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprobarMensajeActionPerformed
         // leer mensaje
         try {

@@ -52,9 +52,9 @@ public class ServicioResource {
     }
 
     /**
-     * PUT method for updating or creating an instance of ServicioResource
-     * @param content representation for the resource
-     * @return an HTTP response with content of the updated or created resource.
+     * Registra una llave pública en la base de datos de la aplicacion
+     * @param recibido información recibida en formato json de la llave pública. 
+     * @return identificador en formato json
      */
     @POST
     @Path("register")
@@ -91,6 +91,11 @@ public class ServicioResource {
         return Response.ok(strRetorno).build();
     }
     
+    /**
+     * Valida que un mensaje fue encriptado con una llave privada específica
+     * @param recibido
+     * @return boolean en formato json
+     */
     @POST
     @Path("/validate")
     @Consumes(MediaType.APPLICATION_JSON)
