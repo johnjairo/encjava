@@ -10,29 +10,15 @@ package publica.servidor.pojos;
  */
 public class ValidarRequest {
     
-    private byte[] msgEncriptado;
+    private String msgEncriptado;
     private String msg;
     private long identificador;
 
-    public ValidarRequest(byte[] msgEncriptado, String msg, long identificador) {
+    public ValidarRequest(String msgEncriptado, String msg, long identificador) {
         this.msgEncriptado = msgEncriptado;
         this.msg = msg;
         this.identificador = identificador;
-    }        
-
-    /**
-     * @return the msgEncriptado
-     */
-    public byte[] getMsgEncriptado() {
-        return msgEncriptado;
-    }
-
-    /**
-     * @param msgEncriptado the msgEncriptado to set
-     */
-    public void setMsgEncriptado(byte[] msgEncriptado) {
-        this.msgEncriptado = msgEncriptado;
-    }
+    }            
 
     /**
      * @return the msg
@@ -60,6 +46,20 @@ public class ValidarRequest {
      */
     public void setIdentificador(long identificador) {
         this.identificador = identificador;
+    }
+
+    /**
+     * @return the msgEncriptado
+     */
+    public String getMsgEncriptado() {
+        return msgEncriptado;
+    }
+
+    /**
+     * @param msgEncriptado the msgEncriptado to set
+     */
+    public void setMsgEncriptado(String msgEncriptado) {
+        this.msgEncriptado = msgEncriptado;
     }
     
 }

@@ -23,6 +23,7 @@ import publica.servidor.datos.OperacionesDatos;
 import publica.servidor.pojos.RegistrarRequest;
 import publica.servidor.pojos.RegistrarResponse;
 import publica.servidor.pojos.ValidarRequest;
+import sun.misc.BASE64Decoder;
 
 /**
  * REST Web Service
@@ -113,10 +114,14 @@ public class ServicioResource {
         OperacionesDatos bd = new OperacionesDatos();
         try {
             PublicKey llavePublica = bd.LeerLlavePublica(request.getIdentificador());
+            // Base64
+            BASE64Decoder decodificador = new BASE64Decoder();
+            byte[] bMsgEncriptado = decodificador.decodeBuffer(request.getMsgEncriptado()); // obtiene el byte[] del mensaje
+            // Desencriptar
             Cipher encriptador;
             encriptador = Cipher.getInstance("RSA");
-            encriptador.init(Cipher.DECRYPT_MODE, llavePublica);
-            byte[] mensaje = encriptador.doFinal(request.getMsgEncriptado());
+            encriptador.init(Cipher.DECRYPT_MODE, llavePublica);            
+            byte[] mensaje = encriptador.doFinal(bMsgEncriptado); // obtiene el byte[] con el msje descriptado
             String msgDesencriptado = new String(mensaje);
             retorno = msgDesencriptado.equals(request.getMsg());
         } catch (Exception e) {

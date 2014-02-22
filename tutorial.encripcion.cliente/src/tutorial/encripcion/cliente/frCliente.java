@@ -24,6 +24,7 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import sun.misc.BASE64Encoder;
 import tutorial.encripcion.cliente.pojos.RegistrarRequest;
 import tutorial.encripcion.cliente.pojos.RegistrarResponse;
 import tutorial.encripcion.cliente.pojos.ValidarRequest;
@@ -37,6 +38,10 @@ import tutorial.encripcion.cliente.pojos.ValidarRequest;
  */
 public class frCliente extends javax.swing.JFrame {
 
+    
+    //private static final String DIRECCION_WEB_SERVICE = "http://138.91.48.35/Publica.Servidor/webresources/Servicio/";
+    private static final String DIRECCION_WEB_SERVICE = "http://localhost:8080/Publica.Servidor/webresources/Servicio/";
+    
     /**
      * Creates new form frCliente
      */
@@ -97,14 +102,11 @@ public class frCliente extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnSeleccionarRuta)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtRuta))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnGenerar)))
+                .addComponent(btnSeleccionarRuta)
+                .addGap(18, 18, 18)
+                .addComponent(txtRuta)
+                .addGap(18, 18, 18)
+                .addComponent(btnGenerar)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -113,10 +115,9 @@ public class frCliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSeleccionarRuta)
-                    .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGenerar)
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGenerar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Pruebas al Web Service"));
@@ -211,7 +212,7 @@ public class frCliente extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnComprobarMensaje))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -229,9 +230,9 @@ public class frCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -323,8 +324,7 @@ public class frCliente extends javax.swing.JFrame {
                 String strSolicitud = gson.toJson(solicitud);
                 // hacer post
                 Client cliente = ClientBuilder.newClient();
-                WebTarget miRecurso = cliente.target("http://138.91.48.35/Publica.Servidor/webresources/Servicio/")
-                        .path("register");
+                WebTarget miRecurso = cliente.target(DIRECCION_WEB_SERVICE).path("register");
                 Response response = miRecurso
                         .request(MediaType.APPLICATION_JSON).post(Entity.json(strSolicitud));
                 String respuesta = response.readEntity(String.class);
@@ -360,13 +360,14 @@ public class frCliente extends javax.swing.JFrame {
                     // si hubo identificador
                     PrivateKey llavePrivada = Seguridad.LeerLlavePrivada(direccionPrivada);
                     byte[] msgEncriptado = Seguridad.EncriptarMensaje(mensaje, llavePrivada);
-                    ValidarRequest objRequest = new ValidarRequest(msgEncriptado, mensaje, identificador);
+                    BASE64Encoder codificador = new BASE64Encoder();
+                    String strMsgEncriptado = codificador.encode(msgEncriptado);
+                    ValidarRequest objRequest = new ValidarRequest(strMsgEncriptado, mensaje, identificador);
                     Gson gson = new Gson();
                     // hacer post
                     Client cliente = ClientBuilder.newClient();
                     String strSolicitud = gson.toJson(objRequest, ValidarRequest.class);
-                    WebTarget miRecurso = cliente.target("http://138.91.48.35/Publica.Servidor/webresources/Servicio/")
-                        .path("validate");                    
+                    WebTarget miRecurso = cliente.target(DIRECCION_WEB_SERVICE).path("validate");                    
                     Response response = miRecurso.request(MediaType.APPLICATION_JSON)
                             .post(Entity.json(strSolicitud));
                     String respuesta = response.readEntity(String.class);
