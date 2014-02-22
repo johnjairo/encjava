@@ -1,11 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package publica.servidor.pojos;
 
 /**
- *
+ * Clase POJO (Plain Old Java Object) para la respuesta de la operación Registrar
  * @author JOHN JAIRO
  */
 public class RegistrarResponse {

@@ -1,19 +1,31 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package publica.servidor.pojos;
 
 /**
- *
+ * Clase POJO (Plain Old Java Object) para la operación validar
  * @author JOHN JAIRO
  */
 public class ValidarRequest {
     
+    /**
+     * Representación en base64 del mensaje encriptado
+     */
     private String msgEncriptado;
+    /**
+     * Mensaje sin encriptar
+     */
     private String msg;
+    /**
+     * Identificador de la llave pública
+     */
     private long identificador;
 
+    /**
+     * Constructor de la clase para hacer solicitud de verificación de un mensaje
+     * @param msgEncriptado mensaje encriptado en base64
+     * @param msg mensaje en texto plano
+     * @param identificador identificador de la llave almacenada en el servidor
+     */
     public ValidarRequest(String msgEncriptado, String msg, long identificador) {
         this.msgEncriptado = msgEncriptado;
         this.msg = msg;

@@ -1,11 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package publica.servidor.pojos;
 
 /**
- * Clase POJO para la operación registrar post
+ * Clase POJO (Plain Old Java Object) para la operación registrar post
  * @author JOHN JAIRO
  */
 public class RegistrarRequest {
@@ -13,46 +10,49 @@ public class RegistrarRequest {
     /**
      * Llave publica a recibir
      */
-    private byte[] modulo;
+    private String modulo;
     
     /**
      * Exponente de la llave publica
      */
-    private byte[] exponente;
+    private String exponente;
 
-    public RegistrarRequest(byte[] modulo, byte[] exponente) {
+    /**
+     * Constructor de la clase. 
+     * @param modulo Representación del modulo en base64
+     * @param exponente Representación del modula en base64
+     */
+    public RegistrarRequest(String modulo, String exponente) {
         this.modulo = modulo;
         this.exponente = exponente;
-    }
-
+    }        
+    
     /**
      * @return the modulo
      */
-    public byte[] getModulo() {
+    public String getModulo() {
         return modulo;
     }
 
     /**
      * @param modulo the modulo to set
      */
-    public void setModulo(byte[] modulo) {
+    public void setModulo(String modulo) {
         this.modulo = modulo;
     }
 
     /**
      * @return the exponente
      */
-    public byte[] getExponente() {
+    public String getExponente() {
         return exponente;
     }
 
     /**
      * @param exponente the exponente to set
      */
-    public void setExponente(byte[] exponente) {
+    public void setExponente(String exponente) {
         this.exponente = exponente;
     }
 
-    
-    
 }

@@ -58,29 +58,32 @@ public class frCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panGenerarLlaves = new javax.swing.JPanel();
         btnSeleccionarRuta = new javax.swing.JButton();
         txtRuta = new javax.swing.JTextField();
         btnGenerar = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        btnLlavePrivada = new javax.swing.JButton();
-        txtLlavePrivada = new javax.swing.JTextField();
+        panPruebasWS = new javax.swing.JPanel();
+        panRegistroLlavesPublicas = new javax.swing.JPanel();
         btnLlavePublica = new javax.swing.JButton();
         txtLlavePublica = new javax.swing.JTextField();
+        btnRegistarPublica = new javax.swing.JButton();
+        panValidarEncripcionMsgs = new javax.swing.JPanel();
+        btnLlavePrivada = new javax.swing.JButton();
+        txtLlavePrivada = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtMensaje = new javax.swing.JTextArea();
-        btnRegistarPublica = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtIdentificador = new javax.swing.JTextField();
         btnComprobarMensaje = new javax.swing.JButton();
+        txtIdentificador = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Tutorial Encripción");
+        setTitle("Cliente para Encripción");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Generar Llaves"));
+        panGenerarLlaves.setBorder(javax.swing.BorderFactory.createTitledBorder("Generar Llaves"));
 
         btnSeleccionarRuta.setText("Seleccionar Ruta");
+        btnSeleccionarRuta.setToolTipText("Permite seleccionar la ruta donde se almacenarán el par de llaves");
         btnSeleccionarRuta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSeleccionarRutaActionPerformed(evt);
@@ -90,17 +93,18 @@ public class frCliente extends javax.swing.JFrame {
         txtRuta.setEditable(false);
 
         btnGenerar.setText("Generar");
+        btnGenerar.setToolTipText("Genera las llaves pública y privada en la ruta seleccionada");
         btnGenerar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenerarActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panGenerarLlavesLayout = new javax.swing.GroupLayout(panGenerarLlaves);
+        panGenerarLlaves.setLayout(panGenerarLlavesLayout);
+        panGenerarLlavesLayout.setHorizontalGroup(
+            panGenerarLlavesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panGenerarLlavesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnSeleccionarRuta)
                 .addGap(18, 18, 18)
@@ -109,29 +113,22 @@ public class frCliente extends javax.swing.JFrame {
                 .addComponent(btnGenerar)
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panGenerarLlavesLayout.setVerticalGroup(
+            panGenerarLlavesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panGenerarLlavesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panGenerarLlavesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSeleccionarRuta)
                     .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGenerar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Pruebas al Web Service"));
+        panPruebasWS.setBorder(javax.swing.BorderFactory.createTitledBorder("Pruebas al Web Service"));
 
-        btnLlavePrivada.setText("Llave Privada");
-        btnLlavePrivada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLlavePrivadaActionPerformed(evt);
-            }
-        });
+        panRegistroLlavesPublicas.setBorder(javax.swing.BorderFactory.createTitledBorder("Registro Llave Pública"));
 
-        txtLlavePrivada.setEditable(false);
-
-        btnLlavePublica.setText("Llave Pública");
+        btnLlavePublica.setText("Ruta Llave Pública");
         btnLlavePublica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLlavePublicaActionPerformed(evt);
@@ -140,79 +137,128 @@ public class frCliente extends javax.swing.JFrame {
 
         txtLlavePublica.setEditable(false);
 
-        txtMensaje.setColumns(20);
-        txtMensaje.setRows(5);
-        jScrollPane1.setViewportView(txtMensaje);
-
         btnRegistarPublica.setText("Registrar Llave Publica");
+        btnRegistarPublica.setToolTipText("Registra la llave pública seleccionada en el servidor.");
         btnRegistarPublica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistarPublicaActionPerformed(evt);
             }
         });
 
+        javax.swing.GroupLayout panRegistroLlavesPublicasLayout = new javax.swing.GroupLayout(panRegistroLlavesPublicas);
+        panRegistroLlavesPublicas.setLayout(panRegistroLlavesPublicasLayout);
+        panRegistroLlavesPublicasLayout.setHorizontalGroup(
+            panRegistroLlavesPublicasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panRegistroLlavesPublicasLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(btnLlavePublica, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtLlavePublica, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnRegistarPublica)
+                .addContainerGap())
+        );
+        panRegistroLlavesPublicasLayout.setVerticalGroup(
+            panRegistroLlavesPublicasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panRegistroLlavesPublicasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panRegistroLlavesPublicasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLlavePublica)
+                    .addComponent(txtLlavePublica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegistarPublica))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        panValidarEncripcionMsgs.setBorder(javax.swing.BorderFactory.createTitledBorder("Validar Encripción de Mensajes"));
+
+        btnLlavePrivada.setText("Ruta Llave Privada");
+        btnLlavePrivada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLlavePrivadaActionPerformed(evt);
+            }
+        });
+
+        txtLlavePrivada.setEditable(false);
+
         jLabel2.setText("Mensaje:");
 
-        jLabel3.setText("Identificador:");
+        txtMensaje.setColumns(20);
+        txtMensaje.setRows(5);
+        txtMensaje.setToolTipText("Digite aquí el mensaje que desea enviar encriptado");
+        jScrollPane1.setViewportView(txtMensaje);
 
         btnComprobarMensaje.setText("Comprobar Mensaje");
+        btnComprobarMensaje.setToolTipText("Comprueba que el mensaje enviado se haya encriptado con la llave privada correspondiente, a la pública registrada");
         btnComprobarMensaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnComprobarMensajeActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jLabel3.setText("Identificador de la llave pública registrada:");
+
+        javax.swing.GroupLayout panValidarEncripcionMsgsLayout = new javax.swing.GroupLayout(panValidarEncripcionMsgs);
+        panValidarEncripcionMsgs.setLayout(panValidarEncripcionMsgsLayout);
+        panValidarEncripcionMsgsLayout.setHorizontalGroup(
+            panValidarEncripcionMsgsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panValidarEncripcionMsgsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnLlavePublica, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtLlavePublica, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnRegistarPublica))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(panValidarEncripcionMsgsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panValidarEncripcionMsgsLayout.createSequentialGroup()
                         .addComponent(btnLlavePrivada, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(txtLlavePrivada))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtIdentificador)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnComprobarMensaje)))
-                .addContainerGap())
+                    .addGroup(panValidarEncripcionMsgsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(panValidarEncripcionMsgsLayout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnComprobarMensaje))
+                        .addGroup(panValidarEncripcionMsgsLayout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(18, 18, 18)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLlavePublica)
-                    .addComponent(txtLlavePublica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistarPublica))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        panValidarEncripcionMsgsLayout.setVerticalGroup(
+            panValidarEncripcionMsgsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panValidarEncripcionMsgsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panValidarEncripcionMsgsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLlavePrivada)
                     .addComponent(txtLlavePrivada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                .addGroup(panValidarEncripcionMsgsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panValidarEncripcionMsgsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnComprobarMensaje)
                     .addComponent(txtIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnComprobarMensaje))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel3))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout panPruebasWSLayout = new javax.swing.GroupLayout(panPruebasWS);
+        panPruebasWS.setLayout(panPruebasWSLayout);
+        panPruebasWSLayout.setHorizontalGroup(
+            panPruebasWSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panPruebasWSLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panPruebasWSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panRegistroLlavesPublicas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panValidarEncripcionMsgs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        panPruebasWSLayout.setVerticalGroup(
+            panPruebasWSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panPruebasWSLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panRegistroLlavesPublicas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(panValidarEncripcionMsgs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -221,17 +267,17 @@ public class frCliente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panGenerarLlaves, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panPruebasWS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panGenerarLlaves, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panPruebasWS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -314,12 +360,13 @@ public class frCliente extends javax.swing.JFrame {
         try {            
             if(txtLlavePublica.getText() != null && !txtLlavePublica.getText().isEmpty()) {
                 // leer archivo
+                BASE64Encoder codificador = new BASE64Encoder();
                 PublicKey llavePublica = Seguridad.LeerLlavePublica(txtLlavePublica.getText());
                 KeyFactory fabrica = KeyFactory.getInstance("RSA");
                 RSAPublicKeySpec specsLlavePublica = fabrica.getKeySpec(llavePublica, RSAPublicKeySpec.class);
                 RegistrarRequest solicitud = new RegistrarRequest(
-                        specsLlavePublica.getModulus().toByteArray(), 
-                        specsLlavePublica.getPublicExponent().toByteArray());
+                        codificador.encode(specsLlavePublica.getModulus().toByteArray()), 
+                        codificador.encode(specsLlavePublica.getPublicExponent().toByteArray()));
                 Gson gson = new Gson();
                 String strSolicitud = gson.toJson(solicitud);
                 // hacer post
@@ -331,10 +378,12 @@ public class frCliente extends javax.swing.JFrame {
                 //long valor = gson.fromJson(respuesta, long.class);
                 RegistrarResponse objRespuesta = gson.fromJson(respuesta, RegistrarResponse.class);
                 JOptionPane.showMessageDialog(null, "Id de la llave registrada: " + objRespuesta.getId());
+            } else {
+                JOptionPane.showMessageDialog(null, "No ha seleccionado la llave pública");
             }
         } catch (IOException | ClassNotFoundException | NoSuchAlgorithmException | InvalidKeySpecException | HeadlessException e) {
             JOptionPane.showMessageDialog(null, e.toString());
-        }  
+        }
     }//GEN-LAST:event_btnRegistarPublicaActionPerformed
 
     /**
@@ -437,9 +486,11 @@ public class frCliente extends javax.swing.JFrame {
     private javax.swing.JButton btnSeleccionarRuta;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panGenerarLlaves;
+    private javax.swing.JPanel panPruebasWS;
+    private javax.swing.JPanel panRegistroLlavesPublicas;
+    private javax.swing.JPanel panValidarEncripcionMsgs;
     private javax.swing.JTextField txtIdentificador;
     private javax.swing.JTextField txtLlavePrivada;
     private javax.swing.JTextField txtLlavePublica;

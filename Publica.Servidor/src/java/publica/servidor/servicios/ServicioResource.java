@@ -66,12 +66,14 @@ public class ServicioResource {
         RegistrarRequest request;        
         BigInteger modulo;
         BigInteger exponente;
+        // Decodificador base 64
+        BASE64Decoder decodificador = new BASE64Decoder();
         long retorno = -1;
         try {
             gson = new Gson();
             request = gson.fromJson(recibido, RegistrarRequest.class);
-            modulo = new BigInteger(request.getModulo());
-            exponente = new BigInteger(request.getExponente());
+            modulo = new BigInteger(decodificador.decodeBuffer(request.getModulo()));
+            exponente = new BigInteger(decodificador.decodeBuffer(request.getExponente()));
         } catch (Exception e) {            
             //throw new HTTPException(400); // bad request exception
             return Response.status(Response.Status.BAD_REQUEST).build();
@@ -81,9 +83,11 @@ public class ServicioResource {
             // validar que sea una llave pública
             RSAPublicKeySpec specs = new RSAPublicKeySpec(modulo, exponente);
             KeyFactory fabrica = KeyFactory.getInstance("RSA");
-            PublicKey publica = fabrica.generatePublic(specs);
+            PublicKey publica = fabrica.generatePublic(specs);            
             // insertar en la base de datos
-            retorno = bd.AgregarLlavePublica(request.getModulo(), request.getExponente());
+            retorno = bd.AgregarLlavePublica(
+                        decodificador.decodeBuffer(request.getModulo()), 
+                        decodificador.decodeBuffer(request.getExponente()));
         } catch (Exception e) {
             return Response.status(Response.Status.PRECONDITION_FAILED).build();
         }
