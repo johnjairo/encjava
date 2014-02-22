@@ -39,8 +39,8 @@ import tutorial.encripcion.cliente.pojos.ValidarRequest;
 public class frCliente extends javax.swing.JFrame {
 
     
-    //private static final String DIRECCION_WEB_SERVICE = "http://138.91.48.35/Publica.Servidor/webresources/Servicio/";
-    private static final String DIRECCION_WEB_SERVICE = "http://localhost:8080/Publica.Servidor/webresources/Servicio/";
+    private static final String DIRECCION_WEB_SERVICE = "http://138.91.48.35/Publica.Servidor/webresources/Servicio/";
+    //private static final String DIRECCION_WEB_SERVICE = "http://localhost:8080/Publica.Servidor/webresources/Servicio/";
     
     /**
      * Creates new form frCliente
